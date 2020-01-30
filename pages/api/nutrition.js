@@ -13,6 +13,6 @@ export default (req, res) => {
   // const data = await res.json();
 
   res.status(200).json({
-    quote: "quote"
+    nutrition: "1 carb"
   });
 };

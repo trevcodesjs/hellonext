@@ -3,34 +3,33 @@ import ItemRow from '../components/ItemRow';
 import useSWR from 'swr';
 
 const Nutrition = props => {
-  const a = useSWR('/api/nutrition', fetcher);
-console.log(a);
+  const { data } = useSWR('/api/nutrition', fetcher);
+
+  const nutrition = data?.nutrition;
 
   return <div>
     <ItemRow />
     <div id="banana">
       { JSON.stringify(props.data) }
     </div>
+    <div className="quote">
+      { nutrition }
+    </div>
 
     <style jsx>{`
-        #banana {
-          width: 90%;
-          max-width: 900px;
-          margin: 300px auto;
-          text-align: center;
-        }
-        .quote {
-          font-family: cursive;
-          color: #e243de;
-          font-size: 24px;
-          padding-bottom: 10px;
-        }
-        .author {
-          font-family: sans-serif;
-          color: #559834;
-          font-size: 20px;
-        }
-      `}</style>
+      #banana {
+        width: 90%;
+        max-width: 900px;
+        margin: 300px auto;
+        text-align: center;
+      }
+      .quote {
+        font-family: cursive;
+        color: #e243de;
+        font-size: 24px;
+        padding-bottom: 10px;
+      }
+    `}</style>
   </div>
 };
 
